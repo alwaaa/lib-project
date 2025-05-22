@@ -32,23 +32,27 @@
 const addBook = document.querySelector(".add");
 const bookCard = document.querySelector(".add-book-card");
 const submit = document.querySelector(".submit-button");
+
 let bookName = "";
 let bookAuthor = "";
 let bookYear = null;
+
 const bookNameInput = document.querySelector(".bookName");
 const authorNameInput = document.querySelector(".authorName");
 const releaseYearInput = document.querySelector(".releaseYear");
 
+let myLibrary = []; 
 
 addBook.addEventListener("click", () => {
     bookCard.classList.add("active");
 })
 
 submit.addEventListener("click", () => {
+
     bookName = bookNameInput.value;
     bookAuthor = authorNameInput.value;
     bookYear = releaseYearInput.value;
-    const myLibrary = []; 
+
 
     function Book(bookName, bookAuthor, bookYear) {
         this.bookName = bookName;
@@ -59,12 +63,16 @@ submit.addEventListener("click", () => {
         let book = new Book(bookName, bookAuthor, bookYear);
         book.id = crypto.randomUUID();
         myLibrary.push(book);
-        return book;
+        console.log(myLibrary);
+        return book;    
 }
+    addBookToLibrary(bookName, bookAuthor, bookYear);
 })
 
 
-// console.log(displayLibrary);
+
+
+
 
 
 
