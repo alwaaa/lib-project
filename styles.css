@@ -5,3 +5,53 @@
     list-style-type: none;
     font-family: "Montserrat";
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 100vh; */
+}
+
+header h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-book-card {
+    display: none;
+    margin: 20px 0;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding: 30px;
+}
+
+.add-book-card button {
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.book-form input {
+    padding: 5px;
+}
+
+.submit-button {
+    width: 100%;
+}
+
+.active {
+    display:block;
+}
+
+.add {
+    padding: 20px;
+}
