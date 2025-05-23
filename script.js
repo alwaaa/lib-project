@@ -32,6 +32,7 @@
 const addBook = document.querySelector(".add");
 const bookCard = document.querySelector(".add-book-card");
 const submit = document.querySelector(".submit-button");
+const clear = document.querySelector(".clear");
 
 let bookName = "";
 let bookAuthor = "";
@@ -40,19 +41,24 @@ let bookYear = null;
 const bookNameInput = document.querySelector(".bookName");
 const authorNameInput = document.querySelector(".authorName");
 const releaseYearInput = document.querySelector(".releaseYear");
+const bookCardsContainer = document.querySelector(".bookCardsContainer");
 
 let myLibrary = []; 
 
+// Кнопка добавления книги
 addBook.addEventListener("click", () => {
     bookCard.classList.add("active");
 })
-
+// Кнопка очищения библиотеки и карточек внутри контейнера
+clear.addEventListener("click", () => {
+    myLibrary = [];
+    bookCardsContainer.innerHTML = " ";
+})
+// Логика нажатия кнопки сабмит
 submit.addEventListener("click", () => {
-
     bookName = bookNameInput.value;
     bookAuthor = authorNameInput.value;
     bookYear = releaseYearInput.value;
-
 
     function Book(bookName, bookAuthor, bookYear) {
         this.bookName = bookName;
@@ -63,10 +69,19 @@ submit.addEventListener("click", () => {
         let book = new Book(bookName, bookAuthor, bookYear);
         book.id = crypto.randomUUID();
         myLibrary.push(book);
-        console.log(myLibrary);
         return book;    
 }
+// Функция, создающая карточку внутри контейнера со всеми карточками книг
+    function addBookCard() {
+        let book = document.createElement("div");
+        book.classList.add("bookCard");
+        bookCardsContainer.appendChild(book);
+        book.textContent = `${bookName}, ${bookAuthor}, ${bookYear}`;
+    }
+// Функции, вызывающиеся после нажатия кнопки
+    addBookCard();
     addBookToLibrary(bookName, bookAuthor, bookYear);
+    console.log(myLibrary);
 })
 
 
